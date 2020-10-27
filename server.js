@@ -29,6 +29,7 @@ app.get("/", (req, res) => {
 
 // Hizmet veren linklerimiz
 require('./app/routes/auth.routes')(app);
+require('./app/routes/user.routes')(app);
 
 // Servisimizin yayın bilgisi
 const PORT = process.env.PORT || 8080;

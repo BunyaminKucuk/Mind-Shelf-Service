@@ -75,3 +75,22 @@ exports.userDelete = (req, res) => {
             res.status(500).json(error);
         });
 }
+
+exports.allUsers = (req, res) => {
+    User.findAll()
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.send(err);
+        });
+}
+
+exports.getById = (req, res) => {
+    User.findByPk(req.query.user_id).then(user => {
+        res.status(200)
+            .send({
+                user_data: user
+            });
+    });
+}
