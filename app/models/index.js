@@ -24,6 +24,13 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
+//include db tables
 db.user = require("../models/TblUsers.js")(sequelize, Sequelize);
+db.book = require("../models/TblBook")(sequelize, Sequelize);
+db.author = require("../models/TblAuthor")(sequelize, Sequelize);
+
+//associations db schema
+db.author.hasMany(db.book, { foreignKey: 'AuthorID' })
+db.book.belongsTo(db.author, { foreignKey: "AuthorID" })
 
 module.exports = db;
