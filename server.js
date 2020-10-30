@@ -21,10 +21,11 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to MindShelf Service." });
 });
 
-// including routs
+// including routes
 require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
 require('./app/routes/author.routes')(app);
+require('./app/routes/book.routes')(app);
 
 //brodcasting 8080 port
 const PORT = process.env.PORT || 8080;
