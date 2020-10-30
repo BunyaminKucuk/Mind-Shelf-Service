@@ -9,11 +9,11 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Modeller dahil ediliyor
+//including models
 const db = require("./app/models");
 
 
-//sequelize ile db bağlantısı oluşturuluyor
+//db connection with sequelize
 db.sequelize.sync();
 
 // Main Link
@@ -21,11 +21,12 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to MindShelf Service." });
 });
 
-// Hizmet veren linklerimiz
+// including routs
 require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
+require('./app/routes/author.routes')(app);
 
-// Servisimizin yayın bilgisi
+//brodcasting 8080 port
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
