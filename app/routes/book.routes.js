@@ -33,5 +33,10 @@ module.exports = function (app) {
         //[authJwt.verifyToken],
         controller.allBooks,
     );
+    app.get(
+        "/api/admin/author/all-books",
+        //[authJwt.verifyToken],
+        controller.getAuthorAllBooks,
+    );
 
 };

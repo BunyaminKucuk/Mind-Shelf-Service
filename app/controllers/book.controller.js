@@ -77,3 +77,17 @@ exports.allBooks = (req, res) => {
             res.send(err);
         });
 };
+exports.getAuthorAllBooks = (req, res) => {
+    //Auyhor Books listeleme işlemi
+    Book.findAll({
+        where: {
+            AuthorID: req.query.author_id,
+        }
+    })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.send(err);
+        });
+};
