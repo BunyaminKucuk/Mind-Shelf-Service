@@ -1,5 +1,5 @@
 const { authJwt } = require("../middleware");
-const controller = require("../controllers/book.controller");
+const controller = require("../controllers/library.controller");
 
 module.exports = function (app) {
     app.use(function (req, res, next) {
@@ -9,29 +9,29 @@ module.exports = function (app) {
         );
         next();
     });
-    //book ekleme 
+    //library ekleme 
     app.post(
-        "/api/admin/add-book",
-        [authJwt.verifyToken],
-        controller.addBook,
-    );
-    //book güncelleme
-    app.post(
-        "/api/admin/update-book",
+        "/api/admin/add-library",
         //[authJwt.verifyToken],
-        controller.updateBook,
+        controller.addLibrary,
     );
-    //book delete
+    //library güncelleme
     app.post(
-        "/api/admin/delete-book",
+        "/api/admin/update-library",
         //[authJwt.verifyToken],
-        controller.deleteBook,
+        controller.updateLibrary,
     );
-    //book list
+    //library delete
+    app.post(
+        "/api/admin/delete-library",
+        //[authJwt.verifyToken],
+        controller.deleteLibrary,
+    );
+    //library list
     app.get(
-        "/api/admin/all-books",
+        "/api/admin/all-libraries",
         //[authJwt.verifyToken],
-        controller.allBooks,
+        controller.allLibrary,
     );
 
 };

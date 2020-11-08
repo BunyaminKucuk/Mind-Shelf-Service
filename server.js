@@ -26,8 +26,9 @@ require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
 require('./app/routes/author.routes')(app);
 require('./app/routes/book.routes')(app);
+require('./app/routes/library.routes')(app);
 
-//brodcasting 8080 port
+//brodcast port 8080 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);

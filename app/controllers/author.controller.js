@@ -9,7 +9,7 @@ exports.addAuthor = (req, res) => {
         AuthorIsDeleted: req.body.AuthorIsDeleted,
     })
         .then(author => {
-            res.send({ message: "User registered successfully!", author: author });
+            res.send({ message: "Author added successfully!", author: author });
         })
         .catch(err => {
             res.status(500).send({ message: err.message });
