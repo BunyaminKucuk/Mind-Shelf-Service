@@ -27,6 +27,7 @@ require('./app/routes/user.routes')(app);
 require('./app/routes/author.routes')(app);
 require('./app/routes/book.routes')(app);
 require('./app/routes/library.routes')(app);
+require('./app/routes/librariesBook.routes')(app);
 
 //brodcast port 8080 
 const PORT = process.env.PORT || 8080;
