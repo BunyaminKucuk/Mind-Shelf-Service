@@ -91,3 +91,10 @@ exports.getAuthorAllBooks = (req, res) => {
             res.send(err);
         });
 };
+exports.getByIDBook = (req, res) => {
+    //Library listeleme işlemi
+    Book.findByPk(req.query.book_id).then(data => {
+        res.status(200)
+            .send(data);
+    });
+};

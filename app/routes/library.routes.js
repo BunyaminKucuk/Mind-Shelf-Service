@@ -37,6 +37,6 @@ module.exports = function (app) {
         "/api/admin/library/getbyid",
         //[authJwt.verifyToken],
         controller.getByIDLibrary,
-    )
+    );
 
 };

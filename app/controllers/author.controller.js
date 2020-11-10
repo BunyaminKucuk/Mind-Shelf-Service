@@ -68,3 +68,10 @@ exports.allAuthors = (req, res) => {
             res.send(err);
         });
 };
+exports.getByIDAuthor = (req, res) => {
+    //Library listeleme işlemi
+    Author.findByPk(req.query.author_id).then(data => {
+        res.status(200)
+            .send(data);
+    });
+};

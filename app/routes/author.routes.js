@@ -33,5 +33,10 @@ module.exports = function (app) {
         [authJwt.verifyToken],
         controller.allAuthors,
     );
+    app.get(
+        "/api/admin/author/getbyid",
+        //[authJwt.verifyToken],
+        controller.getByIDAuthor,
+    );
 
 };

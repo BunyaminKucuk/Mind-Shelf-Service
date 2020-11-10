@@ -38,5 +38,9 @@ module.exports = function (app) {
         //[authJwt.verifyToken],
         controller.getAuthorAllBooks,
     );
-
+    app.get(
+        "/api/admin/book/getbyid",
+        //[authJwt.verifyToken],
+        controller.getByIDBook,
+    );
 };
