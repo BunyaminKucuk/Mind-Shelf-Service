@@ -30,22 +30,31 @@ db.book = require("../models/TblBook")(sequelize, Sequelize);
 db.author = require("../models/TblAuthor")(sequelize, Sequelize);
 db.library = require("../models/TblLibrary")(sequelize, Sequelize);
 db.librariesBook = require("../models/TblLibrarysBook")(sequelize, Sequelize);
+db.summary = require("../models/TblSummary")(sequelize, Sequelize);
 
 //associations db schema
 //author and book
-db.author.hasMany(db.book, { foreignKey: 'AuthorID' })
-db.book.belongsTo(db.author, { foreignKey: "AuthorID" })
+db.author.hasMany(db.book, { foreignKey: 'AuthorID' });
+db.book.belongsTo(db.author, { foreignKey: "AuthorID" });
 
 //user and library
 db.user.hasMany(db.library, { foreignKey: "UserID" });
 db.library.belongsTo(db.user, { foreignKey: "UserID" });
 
 //libraries and librariesBook
-db.library.hasMany(db.librariesBook, { foreignKey: "LibraryID" })
-db.librariesBook.belongsTo(db.library, { foreignKey: "LibraryID" })
+db.library.hasMany(db.librariesBook, { foreignKey: "LibraryID" });
+db.librariesBook.belongsTo(db.library, { foreignKey: "LibraryID" });
 
 //book and librariesBook
-db.book.hasMany(db.librariesBook, { foreignKey: "BookID" })
-db.librariesBook.belongsTo(db.book, { foreignKey: "BookID" })
+db.book.hasMany(db.librariesBook, { foreignKey: "BookID" });
+db.librariesBook.belongsTo(db.book, { foreignKey: "BookID" });
+
+//user and summary
+db.user.hasMany(db.summary, { foreignKey: "UserID" });
+db.summary.belongsTo(db.user, { foreignKey: "UserID" });
+
+//book and summary
+db.book.hasMany(db.summary, { foreignKey: "BookID" });
+db.summary.belongsTo(db.book, { foreignKey: "BookID" });
 
 module.exports = db;
