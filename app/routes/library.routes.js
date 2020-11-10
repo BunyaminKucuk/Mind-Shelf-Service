@@ -33,5 +33,10 @@ module.exports = function (app) {
         //[authJwt.verifyToken],
         controller.allLibrary,
     );
+    app.get(
+        "/api/admin/library/getbyid",
+        //[authJwt.verifyToken],
+        controller.getByIDLibrary,
+    )
 
 };
