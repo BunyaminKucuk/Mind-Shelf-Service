@@ -72,3 +72,10 @@ exports.allLibrary = (req, res) => {
             res.send(err);
         });
 };
+exports.getByIDLibrary = (req, res) => {
+    //Library listeleme işlemi
+    Library.findByPk(req.query.library_id).then(data => {
+        res.status(200)
+            .send(data);
+    });
+};
