@@ -56,7 +56,8 @@ exports.getSummaryByUser = (req, res) => {
     //Auyhor Books listeleme işlemi
     Summary.findAll({
         where: {
-            UserID: req.query.user_id
+            UserID: req.query.user_id,
+            BookID: req.query.book_id
         }
     })
         .then(data => {
