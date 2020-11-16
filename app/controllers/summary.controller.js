@@ -81,3 +81,11 @@ exports.getSummaryByBook = (req, res) => {
             res.send(err);
         });
 };
+exports.getSummaryWriter = (req, res) => {
+    Summary.findByPk(req.query.summary_id).then(user => {
+        res.status(200)
+            .send({
+                user_id: user.UserID
+            });
+    });
+};

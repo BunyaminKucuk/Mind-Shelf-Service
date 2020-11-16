@@ -37,5 +37,10 @@ module.exports = function (app) {
         //[authJwt.verifyToken],
         controller.getSummaryByBook,
     );
+    app.get(
+        "/api/admin/getUser-summaryWriter",
+        //[authJwt.verifyToken],
+        controller.getSummaryWriter,
+    )
 
 };
