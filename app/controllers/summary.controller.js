@@ -93,9 +93,9 @@ exports.getSummaryWriter = (req, res) => {
 exports.getSummaryByID = (req, res) => {
     Summary.findByPk(req.query.summary_id)
         .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.send(err);
+            res.status(200)
+                .send({
+                    summaryData: data
+                });
         });
 };
