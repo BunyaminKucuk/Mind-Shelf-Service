@@ -81,6 +81,7 @@ exports.getSummaryByBook = (req, res) => {
             res.send(err);
         });
 };
+
 exports.getSummaryWriter = (req, res) => {
     Summary.findByPk(req.query.summary_id).then(user => {
         res.status(200)
@@ -88,4 +89,13 @@ exports.getSummaryWriter = (req, res) => {
                 user_id: user.UserID
             });
     });
+};
+exports.getSummaryByID = (req, res) => {
+    Summary.findByPk(req.query.summary_id)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.send(err);
+        });
 };
