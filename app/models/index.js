@@ -31,6 +31,8 @@ db.author = require("../models/TblAuthor")(sequelize, Sequelize);
 db.library = require("../models/TblLibrary")(sequelize, Sequelize);
 db.librariesBook = require("../models/TblLibrarysBook")(sequelize, Sequelize);
 db.summary = require("../models/TblSummary")(sequelize, Sequelize);
+db.comment = require("../models/TblComment")(sequelize, Sequelize);
+
 
 //associations db schema
 //author and book
@@ -57,4 +59,10 @@ db.summary.belongsTo(db.user, { foreignKey: "UserID" });
 db.book.hasMany(db.summary, { foreignKey: "BookID" });
 db.summary.belongsTo(db.book, { foreignKey: "BookID" });
 
+//summary and comment
+db.summary.hasMany(db.comment, { foreignKey: "SummaryID" });
+db.comment.belongsTo(db.summary, { foreignKey: "SummaryID" });
+//comment and user
+db.user.hasMany(db.comment, { foreignKey: "UserID" });
+db.comment.belongsTo(db.user, { foreignKey: "UserID" });
 module.exports = db;
