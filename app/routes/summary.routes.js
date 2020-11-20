@@ -41,6 +41,10 @@ module.exports = function (app) {
         "/api/admin/getUser-summaryWriter",
         //[authJwt.verifyToken],
         controller.getSummaryWriter,
-    )
-
+    );
+    app.get(
+        "/api/admin/getSummaryById",
+        //[authJwt.verifyToken],
+        controller.getSummaryByID,
+    );
 };
