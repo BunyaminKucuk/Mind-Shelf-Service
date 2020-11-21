@@ -47,9 +47,9 @@ exports.updateComment = (req, res) => {
 
 exports.deleteComment = (req, res) => {
     //Commnet silme işlemi
-    Commnet.destroy({
+    Comment.destroy({
         where: {
-            CommnetID: req.query.comment_id
+            CommentID: req.query.comment_id
         }
     })
         .then(function (deletedRecord) {
