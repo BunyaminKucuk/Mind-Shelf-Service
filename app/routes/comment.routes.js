@@ -27,20 +27,14 @@ module.exports = function (app) {
         //[authJwt.verifyToken],
         controller.deleteComment,
     );
-    //yorum list
     app.get(
-        "/api/admin/all-comments",
+        "/api/admin/getBySummary-comments",
         //[authJwt.verifyToken],
-        controller.allComments,
-    );
+        controller.getCommentBySummary,
+    )
     app.get(
         "/api/admin/user/all-comments",
         //[authJwt.verifyToken],
         controller.getUserAllComments,
-    );
-    app.get(
-        "/api/admin/comment/getbyid",
-        //[authJwt.verifyToken],
-        controller.getByIDComment,
     );
 }

@@ -65,21 +65,11 @@ exports.deleteComment = (req, res) => {
         });
 };
 
-exports.allComments = (req, res) => {
-    //Commnet listeleme işlemi
-    Comment.findAll()
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.send(err);
-        });
-};
-exports.getCommentByUser = (req, res) => {
-    //Auyhor Books listeleme işlemi
+exports.getCommentBySummary = (req, res) => {
+    //Summary's All Comments
     Comment.findAll({
         where: {
-            UserID: req.query.user_id,
+            CommentID: req.query.comment_id,
             SummaryID: req.query.SummaryID
         }
     })
@@ -92,8 +82,8 @@ exports.getCommentByUser = (req, res) => {
 };
 
 exports.getUserAllComments = (req, res) => {
-    //User Commnets listeleme işlemi
-    Commnet.findAll({
+    //User All Commnets listeleme işlemi
+    Comment.findAll({
         where: {
             UserID: req.query.user_id,
         }
@@ -104,12 +94,4 @@ exports.getUserAllComments = (req, res) => {
         .catch(err => {
             res.send(err);
         });
-};
-
-exports.getByIDComment = (req, res) => {
-    //Coments listeleme işlemi
-    Comment.findByPk(req.query.commnet_id).then(data => {
-        res.status(200)
-            .send(data);
-    });
 };
