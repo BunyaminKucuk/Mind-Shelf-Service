@@ -11,30 +11,30 @@ module.exports = function (app) {
     });
     //yorum ekleme
     app.post(
-        "/api/user/add-comment",
+        "/api/admin/add-comment",
         //[authJwt.verifyToken],
         controller.addComment,
     );
     //yorum güncelleme
     app.post(
-        "/api/user/update-comment",
+        "/api/admin/update-comment",
         //[authJwt.verifyToken],
         controller.updateComment,
     );
     //yorum delete
     app.post(
-        "/api/user/delete-comment",
+        "/api/admin/delete-comment",
         //[authJwt.verifyToken],
         controller.deleteComment,
     );
     //yorum list
     app.get(
-        "/api/user/all-comments",
+        "/api/admin/all-comments",
         //[authJwt.verifyToken],
         controller.allComments,
     );
     app.get(
-        "/api/user/user/all-comments",
+        "/api/admin/user/all-comments",
         //[authJwt.verifyToken],
         controller.getUserAllComments,
     );

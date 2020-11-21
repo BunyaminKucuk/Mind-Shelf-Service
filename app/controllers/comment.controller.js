@@ -95,7 +95,7 @@ exports.getUserAllComments = (req, res) => {
     //User Commnets listeleme işlemi
     Commnet.findAll({
         where: {
-            AuthorID: req.query.author_id,
+            UserID: req.query.user_id,
         }
     })
         .then(data => {
@@ -107,7 +107,7 @@ exports.getUserAllComments = (req, res) => {
 };
 
 exports.getByIDComment = (req, res) => {
-    //Library listeleme işlemi
+    //Coments listeleme işlemi
     Comment.findByPk(req.query.commnet_id).then(data => {
         res.status(200)
             .send(data);
