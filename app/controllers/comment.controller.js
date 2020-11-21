@@ -69,7 +69,7 @@ exports.getCommentBySummary = (req, res) => {
     //Summary's All Comments
     Comment.findAll({
         where: {
-            SummaryID: req.query.SummaryID
+            SummaryID: req.query.summary_id
         }
     })
         .then(data => {
