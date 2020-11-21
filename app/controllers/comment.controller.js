@@ -95,3 +95,11 @@ exports.getUserAllComments = (req, res) => {
             res.send(err);
         });
 };
+
+exports.getByIDComment = (req, res) => {
+    //Library listeleme işlemi
+    Comment.findByPk(req.query.comment_id).then(data => {
+        res.status(200)
+            .send(data);
+    });
+};
