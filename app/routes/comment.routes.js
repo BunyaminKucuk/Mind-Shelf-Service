@@ -37,4 +37,9 @@ module.exports = function (app) {
         //[authJwt.verifyToken],
         controller.getUserAllComments,
     );
+    app.get(
+        "/api/admin/comment/getbyid",
+        //[authJwt.verifyToken],
+        controller.getByIDComment,
+    );
 }
