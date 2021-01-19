@@ -27,6 +27,7 @@ exports.updateComment = (req, res) => {
             CommentText: req.body.CommentText,
             SummaryID: req.body.SummaryID,
             UserID: req.body.UserID,
+            CommentStatue:0
         },
         { returning: true, where: { CommentID: req.query.comment_id } }
     )
@@ -65,11 +66,27 @@ exports.deleteComment = (req, res) => {
         });
 };
 
-exports.getCommentBySummary = (req, res) => {
-    //Summary's All Comments
+exports.getCheckCommentBySummary = (req, res) => {
+    //bütün kullanıcıların aynı özete yorum yaptıkları ve onaylanmamış yorumları geliyor
     Comment.findAll({
         where: {
-            SummaryID: req.query.summary_id
+            SummaryID: req.query.summary_id,
+            CommentStatue: 0
+        }
+    })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.send(err);
+        });
+};
+exports.getCommentBySummary = (req, res) => {
+    //bütün kullanıcıların aynı özete yorum yaptıkları ve onaylanmış yorumları geliyor
+    Comment.findAll({
+        where: {
+            SummaryID: req.query.summary_id,
+            CommentStatue: 1
         }
     })
         .then(data => {
@@ -85,6 +102,7 @@ exports.getUserAllComments = (req, res) => {
     Comment.findAll({
         where: {
             UserID: req.query.user_id,
+            CommentStatue:1
         }
     })
         .then(data => {
@@ -95,10 +113,39 @@ exports.getUserAllComments = (req, res) => {
         });
 };
 
+exports.updateCommentStatus = (req, res) => {
+    Comment.update(
+        { CommentStatue: req.query.comment_statues },
+        { returning: true, where: { CommentID: req.query.comment_id } }
+    )
+        .then((result) => {
+            res.status(200)
+                .send({
+                    message: 'CommentStatue update success!',
+                    result: result,
+                });
+        })
+        .catch((err) => {
+            res.status(500)
+                .send({
+                    message: err
+                });
+        });
+};
 exports.getByIDComment = (req, res) => {
     //Library listeleme işlemi
     Comment.findByPk(req.query.comment_id).then(data => {
         res.status(200)
             .send(data);
     });
+};
+
+exports.allComment = (req, res) => {
+    Comment.findAll()
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.send(err);
+        });
 };

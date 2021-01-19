@@ -31,7 +31,7 @@ module.exports = function (app) {
         "/api/admin/getBySummary-comments",
         //[authJwt.verifyToken],
         controller.getCommentBySummary,
-    )
+    );
     app.get(
         "/api/admin/user/all-comments",
         //[authJwt.verifyToken],
@@ -41,5 +41,20 @@ module.exports = function (app) {
         "/api/admin/comment/getbyid",
         //[authJwt.verifyToken],
         controller.getByIDComment,
+    );
+    app.get(
+        "/api/admin/getAllSummary-check",
+        //[authJwt.verifyToken],
+        controller.getCheckCommentBySummary,
+    );
+    app.post(
+        "/api/admin/update-commentstatus",
+        //[authJwt.verifyToken],
+        controller.updateCommentStatus,
+    );
+    app.get(
+        "/api/admin/allcomments",
+        //[authJwt.verifyToken],
+        controller.allComment
     );
 }
