@@ -24,6 +24,10 @@ module.exports = (sequelize, Sequelize) => {
                 }
             }
         },
+        CommentStatue: {
+            type: Sequelize.INTEGER(11),
+            allowNull: false,
+        },
         UserID: {
             type: Sequelize.INTEGER(11),
             validate: {
